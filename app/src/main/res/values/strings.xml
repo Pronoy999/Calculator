@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Calculator</string>
+    <string name="title">Enter the Expression:</string>
+    <string name="hint">Enter here</string>
+    <string name="button1">Solve</string>
+    <string name="button2">Memory Recall</string>
+    <string name="button3">Add to Memory</string>
+    <string name="ansTitle">Answer:</string>
+    <string name="memTitle">Current Memory:</string>
+    <string name="endTitle">Made by Pronoy!!</string>
+</resources>
