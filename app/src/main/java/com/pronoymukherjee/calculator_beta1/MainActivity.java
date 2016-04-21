@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
     public void InfixTo_PostFix() {
         String exp = e.getText().toString();
         exp = exp.trim();
+        exp=Edit_Exp(exp);
         stack = new char[exp.length()];
         int i, ascii;
         char ch;boolean IsNumber=false;
@@ -185,5 +186,22 @@ public class MainActivity extends AppCompatActivity {
     }
     public double Pop1(){
         return stack1[top--];
+    }
+    public String Edit_Exp(String exp){
+        String t="";
+        int i,l=exp.length(),d,d1;char ch,chh;
+        for(i=0;i<l-1;i++){
+            ch=exp.charAt(i);
+            chh=exp.charAt(i+1);
+            d=(int)ch;d1=(int)chh;
+            if((d>=48 && d<=57) && (d1==40)) {
+                t += ch;
+                t += '*';
+                t += chh;i++;
+            }
+            else {t+=ch;}
+        }
+        t+=exp.charAt(l-1);
+        return t;
     }
 }
