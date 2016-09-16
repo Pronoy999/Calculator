@@ -24,14 +24,14 @@
            android:layout_height="wrap_content"
            android:text="@string/title"
            android:textAppearance="?android:attr/textAppearanceMedium"
-           android:id="@+id/t"/>
+           android:id="@+id/t"
+           android:textColor="#0d0b0b" />
        <EditText
            android:layout_width="match_parent"
            android:layout_height="match_parent"
            android:id="@+id/e"
            android:inputType="textMultiLine"
            android:hint="@string/hint"
-
            android:layout_marginTop="20dp"/>
 
     <LinearLayout
@@ -42,7 +42,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/ansButton"
-            android:text="@string/button1"/>
+            android:text="@string/button1"
+            android:clickable="false"
+            android:background="#e96161"
+            android:backgroundTint="#ea8484"
+            android:textColor="#fcfbfb"
+            android:textStyle="normal|bold"
+            android:textAlignment="center" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -53,13 +59,19 @@
             android:layout_height="wrap_content"
             android:id="@+id/mem1"
             android:text="@string/button2"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:background="#74e0e4"
+            android:textColor="#0b0a0a"
+            android:textAlignment="center" />
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/mem2"
-            android:text="@string/button3"/>
+            android:text="@string/button3"
+            android:background="#44bcc5"
+            android:textColor="#fefcfc"
+            android:textAlignment="center" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -69,20 +81,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/ansTitle"
-            android:textAppearance="?android:attr/textAppearanceMedium"/>
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#1a82e4"
+            android:textStyle="bold" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="0.0"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/ans"/>
+            android:id="@+id/ans"
+            android:textStyle="normal|bold" />
     </LinearLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/memTitle"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_marginTop="25dp"/>
+        android:layout_marginTop="25dp"
+        android:textColorHighlight="#fcfcfc"
+        android:textColor="#1a82e4"
+        android:textIsSelectable="false"
+        android:textStyle="bold" />
        <TextView
            android:layout_width="match_parent"
            android:layout_height="match_parent"
@@ -99,7 +118,8 @@
                android:text="@string/endTitle"
                android:gravity="center"
                android:textAppearance="?android:attr/textAppearanceMedium"
-               />
+               android:textColor="#3295e1"
+               android:textStyle="bold"/>
        </LinearLayout>
    </LinearLayout>
    </ScrollView>
