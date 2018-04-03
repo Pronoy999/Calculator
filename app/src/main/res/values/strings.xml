@@ -7,4 +7,6 @@
     <string name="ansTitle">Answer:</string>
     <string name="memTitle">Current Memory:</string>
     <string name="endTitle">Made by Pronoy!!</string>
+    <string name="clear_all">clear all</string>
+    <string name="delete">delete</string>
 </resources>

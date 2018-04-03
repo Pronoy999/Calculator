@@ -8,15 +8,15 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <EditText
+        <android.support.v7.widget.AppCompatEditText
             android:id="@+id/e"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="20dp"
-            android:gravity="top|right"
+            android:gravity="top|start"
             android:hint="@string/hint"
             android:inputType="textMultiLine" />
 
@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <Button
+            <android.support.v7.widget.AppCompatButton
                 android:id="@+id/ansButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <Button
+            <android.support.v7.widget.AppCompatButton
                 android:id="@+id/mem1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
                 android:textAlignment="center"
                 android:textColor="#0b0a0a" />
 
-            <Button
+            <android.support.v7.widget.AppCompatButton
                 android:id="@+id/mem2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -106,7 +106,32 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/clearButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textStyle="bold"
+                    android:textColor="#fff"
+                    android:text="@string/clear_all"
+                    android:background="#ea5895"/>
+                <android.support.v7.widget.AppCompatButton
+                    android:layout_width="0dp"
+                    android:textColor="#fff"
+                    android:textStyle="bold"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/delete"
+                    android:background="#ae416e"
+                    android:id="@+id/delete"/>
+            </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
