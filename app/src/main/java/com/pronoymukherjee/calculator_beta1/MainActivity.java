@@ -38,9 +38,9 @@ public class MainActivity extends AppCompatActivity {
                     String exp = e.getText().toString();
                     exp = exp.trim();
                     exp = Edit_Exp(exp);
-                    exp=Trigonometry(exp);
-                    pexp=InfixTo_PostFix(exp);
-                    String a1=SolvePostfix(pexp);
+                    exp = Trigonometry(exp);
+                    pexp = InfixTo_PostFix(exp);
+                    String a1 = SolvePostfix(pexp);
                     ans.setText(a1);
                     e.setText(a1);
                     m = "";
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public String InfixTo_PostFix(String exp) {
-        String pexp="";
+        String pexp = "";
         stack = new char[exp.length()];
         int i, ascii;
         char ch;
@@ -86,9 +86,12 @@ public class MainActivity extends AppCompatActivity {
                         if (((((int) exp.charAt((i + 1))) >= 48) && (((int) exp.charAt((i + 1))) <=
                                 57)) || ((int) exp.charAt(i + 1) == 46)) {
                             while (!IsNumber) {
-                                if ((exp.charAt(i + 1) == '+') || (exp.charAt(i + 1) == '-') || (exp.charAt(i + 1) == '*') ||
-                                        (exp.charAt(i + 1) == '/') || (exp.charAt(i + 1) == '^') || (exp.charAt(i + 1) == '(') ||
-                                        (exp.charAt(i + 1) == '{') || (exp.charAt(i + 1) == '[') || (exp.charAt(i + 1) == ')') ||
+                                if ((exp.charAt(i + 1) == '+') || (exp.charAt(i + 1) == '-') ||
+                                        (exp.charAt(i + 1) == '*') ||
+                                        (exp.charAt(i + 1) == '/') || (exp.charAt(i + 1) == '^') ||
+                                        (exp.charAt(i + 1) == '(') ||
+                                        (exp.charAt(i + 1) == '{') || (exp.charAt(i + 1) == '[') ||
+                                        (exp.charAt(i + 1) == ')') ||
                                         (exp.charAt(i + 1) == '}') || (exp.charAt(i + 1) == ']')) {
                                     IsNumber = true;
                                     break;
@@ -99,7 +102,8 @@ public class MainActivity extends AppCompatActivity {
                     } catch (Exception ignored) {
                     }
                     pexp += " ";
-                } else if ((ascii == 45) || (ascii == 43) || (ascii == 42) || (ascii == 47) || (ascii == 94)) {
+                } else if ((ascii == 45) || (ascii == 43) || (ascii == 42) || (ascii == 47) ||
+                        (ascii == 94)) {
                     if (top > -1) {
                         int sp = getPrec(stack[top]);
                         int cp = getPrec(ch);
@@ -238,45 +242,52 @@ public class MainActivity extends AppCompatActivity {
     public String Trigonometry(String exp) {
         int i, j, l = exp.length();
         char ch, chh;
-        exp+=" ";
+        exp += " ";
         String num = "", eExp = "";
         int si = 0, ei = 0;
-        boolean isSi=false,isBracket=false;
+        boolean isSi = false, isBracket = false;
         for (i = 0; i < l; i++) {
-            ch = exp.charAt(i);num="";
+            ch = exp.charAt(i);
+            num = "";
             if (ch == 's' || ch == 'c' || ch == 't') {
-                for (j = i; j <=l; j++) {
+                for (j = i; j <= l; j++) {
                     chh = exp.charAt(j);
-                    if ((chh == '(' || ((int) chh >= 48 && (int) chh <= 57) || chh == '{' || chh == '[') && (isSi==false)){
-                        if(chh=='(' || chh=='{' || chh=='[') {si=j+1;isSi=true;isBracket=true;}
-                        else if(((int) chh >= 48 && (int) chh <= 57)){si=j;isSi=true;}
-                    }
-                    else if((chh == '-' || chh == '+' || chh == '*' || chh == '/' || chh == '^' || chh==' ') && (isBracket==false) && (isSi)){
+                    if ((chh == '(' || ((int) chh >= 48 && (int) chh <= 57) || chh == '{' ||
+                            chh == '[') && (isSi == false)) {
+                        if (chh == '(' || chh == '{' || chh == '[') {
+                            si = j + 1;
+                            isSi = true;
+                            isBracket = true;
+                        } else if (((int) chh >= 48 && (int) chh <= 57)) {
+                            si = j;
+                            isSi = true;
+                        }
+                    } else if ((chh == '-' || chh == '+' || chh == '*' || chh == '/' || chh == '^' ||
+                            chh == ' ') && (isBracket == false) && (isSi)) {
                         ei = j;
                         break;
-                    }
-                    else if((chh == ')' || chh == '}' || chh == ']') && (isBracket)){
+                    } else if ((chh == ')' || chh == '}' || chh == ']') && (isBracket)) {
                         ei = j;
                         break;
                     }
                 }
                 num = exp.substring(si, ei);
-                num=InfixTo_PostFix(num);
-                num=SolvePostfix(num);
+                num = InfixTo_PostFix(num);
+                num = SolvePostfix(num);
                 if (ch == 's' && exp.charAt(i + 1) == 'i') {
                     double n = Double.parseDouble(num);
-                    n=n*0.01745329252;
+                    n = n * 0.01745329252;
                     eExp += Math.sin(n);
                 } else if (ch == 'c' && exp.charAt(i + 1) == 'o') {
                     double n = Double.parseDouble(num);
-                    n=n*0.01745329252;
+                    n = n * 0.01745329252;
                     eExp += Math.cos(n);
                 } else if (ch == 't' && exp.charAt(i + 1) == 'a') {
                     double n = Double.parseDouble(num);
-                    n=n*0.01745329252;
+                    n = n * 0.01745329252;
                     eExp += Math.tan(n);
                 }
-                i=j-1;
+                i = j - 1;
             } else eExp += ch;
         }
         return eExp;
