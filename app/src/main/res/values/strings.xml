@@ -9,4 +9,12 @@
     <string name="endTitle">Made by Pronoy!!</string>
     <string name="clear_all">clear all</string>
     <string name="delete">delete</string>
+    <string name="info">Tutorial</string>
+    <string name="tutorial_heading">This is how you need to enter Expression</string>
+    <string name="squareRoot_heading">For Square Root:</string>
+    <string name="sq_4">sq(4)</string>
+    <string name="cubeHeading">For Cube Root:</string>
+    <string name="cq_8">cq(8)</string>
+    <string name="trigo_Heading">For trigonometry:</string>
+    <string name="sin_45_cos_90">sin(45)+cos(90)</string>
 </resources>

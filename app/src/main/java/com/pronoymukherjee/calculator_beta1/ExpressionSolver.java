@@ -1,5 +1,7 @@
 package com.pronoymukherjee.calculator_beta1;
 
+import android.util.Log;
+
 /**
  * Created by mukhe on 05-Apr-18.
  * This is the class to Solve Expression.
@@ -10,6 +12,7 @@ public class ExpressionSolver {
     char stack[];
     int top = -1;
     double stack1[];
+
     public String InfixTo_PostFix(String exp) {
         String pexp = "";
         stack = new char[exp.length()];
@@ -40,7 +43,8 @@ public class ExpressionSolver {
                                 pexp += exp.charAt(++i);
                             }
                         }
-                    } catch (Exception ignored) {
+                    } catch (Exception e) {
+                        Log.d(ExpressionSolver.class.getSimpleName(), e.toString());
                     }
                     pexp += " ";
                 } else if ((ascii == 45) || (ascii == 43) || (ascii == 42) || (ascii == 47) ||
@@ -80,7 +84,8 @@ public class ExpressionSolver {
                     }
                 }
             }
-        } catch (Exception ignored) {
+        } catch (Exception e) {
+            Log.d(ExpressionSolver.class.getSimpleName(), e.toString());
         }
         if (top != -1) {
             while (top != -1) {
@@ -182,18 +187,18 @@ public class ExpressionSolver {
 
     public String Trigonometry(String exp) {
         int i, j, l = exp.length();
-        boolean isSolved=false;
+        boolean isSolved = false;
         char ch, chh;
         exp += " ";
         String num = "", eExp = "";
         int si = 0, ei = 0;
         boolean isSi = false, isBracket = false;
         for (i = 0; i < l; i++) {
-            if(isSolved) break;
+            if (isSolved) break;
             ch = exp.charAt(i);
             num = "";
             if (ch == 's' || ch == 'c' || ch == 't') {
-                for (j = i; j <= l; j++) {
+                for (j = i+3; j <= l; j++) {
                     chh = exp.charAt(j);
                     if ((chh == '(' || ((int) chh >= 48 && (int) chh <= 57) || chh == '{' ||
                             chh == '[') && (isSi == false)) {
@@ -221,38 +226,39 @@ public class ExpressionSolver {
                     double n = Double.parseDouble(num);
                     n = n * 0.01745329252;
                     eExp += Math.sin(n);
-                    isSolved=true;
+                    isSolved = true;
                 } else if (ch == 'c' && exp.charAt(i + 1) == 'o') {
                     double n = Double.parseDouble(num);
                     n = n * 0.01745329252;
                     eExp += Math.cos(n);
-                    isSolved=true;
+                    isSolved = true;
                 } else if (ch == 't' && exp.charAt(i + 1) == 'a') {
                     double n = Double.parseDouble(num);
                     n = n * 0.01745329252;
                     eExp += Math.tan(n);
-                    isSolved=true;
+                    isSolved = true;
                 }
                 i = j - 1;
             } else eExp += ch;
         }
         return eExp;
     }
+
     public String calculateRoots(String exp) {
         int i, j, l = exp.length();
-        char ch, chh,nextChar;
-        boolean isSolved=false;
+        char ch, chh, nextChar;
+        boolean isSolved = false;
         exp += " ";
         String num = "", eExp = "";
         int si = 0, ei = 0;
         boolean isSi = false, isBracket = false;
         for (i = 0; i < l; i++) {
-            if(isSolved)break;
+            if (isSolved) break;
             ch = exp.charAt(i);
-            nextChar=exp.charAt(i+1);
+            nextChar = exp.charAt(i + 1);
             num = "";
-            if ((ch == 's' && nextChar=='q') || (ch=='c' && nextChar=='q')) {
-                for (j = i; j <= l; j++) {
+            if ((ch == 's' && nextChar == 'q') || (ch == 'c' && nextChar == 'q')) {
+                for (j = i+2; j <= l; j++) {
                     chh = exp.charAt(j);
                     if ((chh == '(' || ((int) chh >= 48 && (int) chh <= 57) || chh == '{' ||
                             chh == '[') && (isSi == false)) {
@@ -276,16 +282,16 @@ public class ExpressionSolver {
                 num = exp.substring(si, ei);
                 num = InfixTo_PostFix(num);
                 num = SolvePostfix(num);
-                if (ch == 's' && exp.charAt(i + 1) == 'i') {
+                if (ch == 's' && exp.charAt(i + 1) == 'q') {
                     double n = Double.parseDouble(num);
                     eExp += Math.sqrt(n);
-                    eExp+=exp.substring(ei+1);
-                    isSolved=true;
-                } else if (ch == 'c' && exp.charAt(i + 1) == 'o') {
+                    eExp += exp.substring(ei + 1);
+                    isSolved = true;
+                } else if (ch == 'c' && exp.charAt(i + 1) == 'q') {
                     double n = Double.parseDouble(num);
-                    eExp += Math.pow(n,1/3);
-                    eExp+=exp.substring(ei+1);
-                    isSolved=true;
+                    eExp += Math.pow(n, 1 / 3);
+                    eExp += exp.substring(ei + 1);
+                    isSolved = true;
                 }
                 i = j - 1;
             } else eExp += ch;
